@@ -533,7 +533,7 @@ function ValentinesSite() {
                 }
               </p>
 
-              <div 
+              {/* <div 
                 className="inline-grid gap-2 bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-2xl mb-6"
                 style={{
                   gridTemplateColumns: `repeat(${currentPuzzle.gridSize}, 1fr)`,
@@ -569,6 +569,67 @@ function ValentinesSite() {
                         style={{
                           backgroundImage: `url(${currentPuzzle.imageUrl})`,
                           backgroundSize: `${currentPuzzle.gridSize * 100}%`,
+                          backgroundPosition: `${backgroundX}% ${backgroundY}%`,
+                          filter: isCorrect ? 'brightness(1.1)' : 'none'
+                        }}
+                      />
+                      
+                      <div className="absolute bottom-1 right-1 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
+                        {piece.id + 1}
+                      </div>
+                      
+                      {isCorrect && (
+                        <div className="absolute top-1 left-1 bg-green-500 rounded-full w-6 h-6 flex items-center justify-center">
+                          <span className="text-white text-sm">✓</span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div> */}
+              <div 
+                className="inline-grid gap-2 bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-2xl mb-6"
+                style={{
+                  gridTemplateColumns: `repeat(${currentPuzzle.gridSize}, 1fr)`,
+                }}
+              >
+                {Array.from({ length: currentPuzzle.gridSize * currentPuzzle.gridSize }).map((_, position) => {
+                  const piece = puzzlePieces.find(p => p.currentPosition === position);
+                  const isSelected = selectedPiece === position;
+                  const isCorrect = piece && piece.correctPosition === piece.currentPosition;
+                  
+                  if (!piece) return null;
+                  
+                  // Calculate which part of the image this piece SHOULD show
+                  // Based on the piece's ORIGINAL/CORRECT position (piece.id)
+                  const pieceWidth = 100 / currentPuzzle.gridSize;
+                  const pieceHeight = 100 / currentPuzzle.gridSize;
+                  
+                  // Calculate row and column from the piece's ID (correct position)
+                  const correctRow = Math.floor(piece.id / currentPuzzle.gridSize);
+                  const correctCol = piece.id % currentPuzzle.gridSize;
+                  
+                  // Background position to show the correct part of the image
+                  const backgroundX = correctCol * pieceWidth;
+                  const backgroundY = correctRow * pieceHeight;
+                  
+                  return (
+                    <button
+                      key={position}
+                      onClick={() => handlePieceClick(position)}
+                      className={`
+                        w-24 h-24 md:w-28 md:h-28 rounded-xl shadow-lg
+                        transform transition-all duration-300 hover:scale-105
+                        relative overflow-hidden
+                        ${isSelected ? 'ring-4 ring-pink-500 scale-110 z-10' : ''}
+                        ${isCorrect ? 'ring-4 ring-green-400' : 'ring-2 ring-gray-300'}
+                      `}
+                    >
+                      <div
+                        className="w-full h-full"
+                        style={{
+                          backgroundImage: `url(${currentPuzzle.imageUrl})`,
+                          backgroundSize: `${currentPuzzle.gridSize * 100}% ${currentPuzzle.gridSize * 100}%`,
                           backgroundPosition: `${backgroundX}% ${backgroundY}%`,
                           filter: isCorrect ? 'brightness(1.1)' : 'none'
                         }}
