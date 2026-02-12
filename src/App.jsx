@@ -14,18 +14,31 @@ function ValentinesSite() {
   const [confetti, setConfetti] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
   // Wishlist state
-  const [wishes, setWishes] = useState([
-    { id: 1, title: "Trip to the mountains", addedBy: "You", emoji: "🏔️", color: "#FFB6C1", completed: false },
-    { id: 2, title: "Learn to cook together", addedBy: "You", emoji: "👨‍🍳", color: "#FFE4E1", completed: false },
-    { id: 3, title: "Watch sunrise together", addedBy: "You", emoji: "🌅", color: "#FFC0CB", completed: false },
-    { id: 4, title: "Stargazing date", addedBy: "You", emoji: "⭐", color: "#FFB6D9", completed: false },
-  ]);
+ // Wishlist state with localStorage persistence
+  const [wishes, setWishes] = useState(() => {
+    const saved = localStorage.getItem('valentineWishes');
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    return [
+      { id: 1, title: "Trip to the mountains", addedBy: "You", emoji: "🏔️", color: "#FFB6C1", completed: false },
+      { id: 2, title: "Learn to cook together", addedBy: "You", emoji: "👨‍🍳", color: "#FFE4E1", completed: false },
+      { id: 3, title: "Watch sunrise together", addedBy: "You", emoji: "🌅", color: "#FFC0CB", completed: false },
+      { id: 4, title: "Stargazing date", addedBy: "You", emoji: "⭐", color: "#FFB6D9", completed: false },
+    ];
+  });
   
   const [newWish, setNewWish] = useState('');
   const [selectedEmoji, setSelectedEmoji] = useState('💖');
   const [showAddWish, setShowAddWish] = useState(false);
   
   const emojiOptions = ['💖', '✨', '🌹', '🎡', '🌅', '⭐', '🎬', '🍕', '✈️', '📚', '🎨', '🎵', '🏔️', '🌊', '🎮', '☕'];
+
+  // Save wishes to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('valentineWishes', JSON.stringify(wishes));
+  }, [wishes]);// Wishlist state with localStorage persistence
+
   const [unlockedSections, setUnlockedSections] = useState({
     letter: false,
     memories: false,
@@ -100,7 +113,7 @@ function ValentinesSite() {
     },
     { 
       id: 'memories', 
-      name: 'Our Memories', 
+      name: 'Our Wishlist', 
       unlocks: 'memories', 
       emoji: '📸', 
       color: '#FFE4E1', 
