@@ -67,14 +67,14 @@ function ValentinesSite() {
     }
   }, [showConfetti]);
 
-  const memories = [
-    { title: "Our First Date", emoji: "🌹", color: "#FFB6C1",imageUrl:'images/IMG20251128175810.jpg' },
-    { title: "That Amazing Weekend", emoji: "✨", color: "#FFE4E1" },
-    { title: "When You Made Me Laugh So Hard", emoji: "😄", color: "#FFC0CB" },
-    { title: "Our Adventure Together", emoji: "🎡", color: "#FFB6D9" },
-    { title: "Just Being Us", emoji: "💕", color: "#FFD4E5" },
-    { title: "The Day I Knew", emoji: "💖", color: "#FFE4EC" }
-  ];
+  // const memories = [
+  //   { title: "Our First Date", emoji: "🌹", color: "#FFB6C1",imageUrl:'images/IMG20251128175810.jpg' },
+  //   { title: "That Amazing Weekend", emoji: "✨", color: "#FFE4E1" },
+  //   { title: "When You Made Me Laugh So Hard", emoji: "😄", color: "#FFC0CB" },
+  //   { title: "Our Adventure Together", emoji: "🎡", color: "#FFB6D9" },
+  //   { title: "Just Being Us", emoji: "💕", color: "#FFD4E5" },
+  //   { title: "The Day I Knew", emoji: "💖", color: "#FFE4EC" }
+  // ];
 
   const puzzles = [
     { 
@@ -473,7 +473,7 @@ function ValentinesSite() {
           </div>
         )}
 
-        {currentPage === 'memories' && (
+        {/* /* {currentPage === 'memories' && (
           <div className="max-w-5xl mx-auto animate-fade-in">
             <button
               onClick={() => setCurrentPage('home')}
@@ -506,6 +506,153 @@ function ValentinesSite() {
                   </h3>
                 </div>
               ))}
+            </div>
+          </div>
+        )} */}
+        {currentPage === 'memories' && (
+          <div className="max-w-5xl mx-auto animate-fade-in">
+            <button
+              onClick={() => setCurrentPage('home')}
+              className="mb-6 text-pink-600 hover:text-pink-700 font-semibold flex items-center gap-2"
+            >
+              ← Back
+            </button>
+            
+            <h2 className="text-5xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500">
+              Our Wishlist Together ✨
+            </h2>
+            <p className="text-center text-pink-600 text-lg mb-8">
+              Things we want to do together! Add your wishes anytime 💕
+            </p>
+
+            {/* Add Wish Button */}
+            <div className="flex justify-center mb-8">
+              <button
+                onClick={() => setShowAddWish(!showAddWish)}
+                className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg hover:shadow-pink-400 transform hover:scale-105 transition-all duration-300"
+              >
+                {showAddWish ? '✕ Cancel' : '+ Add New Wish'}
+              </button>
+            </div>
+
+            {/* Add Wish Form */}
+            {showAddWish && (
+              <div className="max-w-2xl mx-auto mb-8 bg-white rounded-3xl p-8 shadow-xl animate-scale-in">
+                <h3 className="text-2xl font-bold text-pink-600 mb-4">Add a New Wish 💫</h3>
+                
+                <div className="mb-4">
+                  <label className="block text-gray-700 font-semibold mb-2">What do you wish for?</label>
+                  <input
+                    type="text"
+                    value={newWish}
+                    onChange={(e) => setNewWish(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && addWish()}
+                    placeholder="e.g., Go on a beach vacation together"
+                    className="w-full px-4 py-3 border-2 border-pink-200 rounded-xl focus:border-pink-500 focus:outline-none text-lg"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-gray-700 font-semibold mb-2">Pick an emoji</label>
+                  <div className="grid grid-cols-8 gap-2">
+                    {emojiOptions.map(emoji => (
+                      <button
+                        key={emoji}
+                        onClick={() => setSelectedEmoji(emoji)}
+                        className={`text-3xl p-2 rounded-lg hover:scale-110 transition-transform ${
+                          selectedEmoji === emoji ? 'bg-pink-200 ring-2 ring-pink-500' : 'bg-gray-100'
+                        }`}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  onClick={addWish}
+                  className="w-full bg-gradient-to-r from-green-400 to-green-500 text-white py-3 rounded-xl font-bold text-lg hover:shadow-lg transform hover:scale-105 transition-all"
+                >
+                  Add to Wishlist 💖
+                </button>
+              </div>
+            )}
+
+            {/* Wishlist Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {wishes.map((wish, index) => (
+                <div
+                  key={wish.id}
+                  className={`bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative ${
+                    wish.completed ? 'opacity-75' : ''
+                  }`}
+                  style={{
+                    animation: `slide-up 0.6s ease-out ${index * 0.1}s both`
+                  }}
+                >
+                  {/* Delete button */}
+                  <button
+                    onClick={() => deleteWish(wish.id)}
+                    className="absolute top-2 right-2 w-8 h-8 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors text-sm font-bold"
+                  >
+                    ✕
+                  </button>
+
+                  {/* Emoji and completed badge */}
+                  <div className="relative mb-4">
+                    <div 
+                      className="w-full h-32 rounded-2xl flex items-center justify-center text-6xl transition-transform"
+                      style={{ backgroundColor: wish.color }}
+                    >
+                      {wish.emoji}
+                    </div>
+                    {wish.completed && (
+                      <div className="absolute top-2 left-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        ✓ Done!
+                      </div>
+                    )}
+                  </div>
+                  
+                  <h3 className={`text-xl font-bold text-gray-800 text-center mb-2 ${
+                    wish.completed ? 'line-through' : ''
+                  }`}>
+                    {wish.title}
+                  </h3>
+                  
+                  <p className="text-center text-gray-500 text-sm mb-4">
+                    Added by: <span className="text-pink-600 font-semibold">{wish.addedBy}</span>
+                  </p>
+
+                  {/* Toggle complete button */}
+                  <button
+                    onClick={() => toggleComplete(wish.id)}
+                    className={`w-full py-2 rounded-lg font-semibold transition-all ${
+                      wish.completed
+                        ? 'bg-gray-300 text-gray-600 hover:bg-gray-400'
+                        : 'bg-gradient-to-r from-pink-400 to-red-400 text-white hover:from-pink-500 hover:to-red-500'
+                    }`}
+                  >
+                    {wish.completed ? 'Mark Incomplete' : 'Mark as Done!'}
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            {/* Empty state */}
+            {wishes.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-xl mb-4">No wishes yet! Add your first wish above 💫</p>
+              </div>
+            )}
+
+            {/* Stats */}
+            <div className="mt-12 bg-gradient-to-r from-pink-200 to-red-200 rounded-3xl p-8 text-center">
+              <p className="text-gray-800 text-xl font-semibold">
+                💖 {wishes.filter(w => w.completed).length} / {wishes.length} wishes completed!
+              </p>
+              <p className="text-gray-700 mt-2">
+                Keep adding and completing wishes together! 🌟
+              </p>
             </div>
           </div>
         )}
