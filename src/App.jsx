@@ -68,7 +68,7 @@ function ValentinesSite() {
   }, [showConfetti]);
 
   const memories = [
-    { title: "Our First Date", emoji: "🌹", color: "#FFB6C1" },
+    { title: "Our First Date", emoji: "🌹", color: "#FFB6C1",imageUrl:'images/IMG20251128175810.jpg' },
     { title: "That Amazing Weekend", emoji: "✨", color: "#FFE4E1" },
     { title: "When You Made Me Laugh So Hard", emoji: "😄", color: "#FFC0CB" },
     { title: "Our Adventure Together", emoji: "🎡", color: "#FFB6D9" },
