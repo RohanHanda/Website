@@ -84,7 +84,7 @@ function ValentinesSite() {
       emoji: '💌', 
       color: '#FFB6C1', 
       gridSize: 3,
-      imageUrl: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&h=600&fit=crop'
+      imageUrl: 'images/IMG20251128175810.jpg'
     },
     { 
       id: 'memories', 
