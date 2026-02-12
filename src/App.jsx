@@ -21,10 +21,13 @@ function ValentinesSite() {
       return JSON.parse(saved);
     }
     return [
-      { id: 1, title: "Trip to the mountains", addedBy: "You", emoji: "🏔️", color: "#FFB6C1", completed: false },
-      { id: 2, title: "Learn to cook together", addedBy: "You", emoji: "👨‍🍳", color: "#FFE4E1", completed: false },
-      { id: 3, title: "Watch sunrise together", addedBy: "You", emoji: "🌅", color: "#FFC0CB", completed: false },
+      { id: 1, title: "Trip Somewhere(Mountains)", addedBy: "You", emoji: "🏔️", color: "#FFB6C1", completed: false },
+      { id: 2, title: "Cook together", addedBy: "You", emoji: "👨‍🍳", color: "#FFE4E1", completed: false },
+      { id: 3, title: "Sleep together(Sleep sleep)", addedBy: "You", emoji: "😴", color: "#FFC0CB", completed: false },
       { id: 4, title: "Stargazing date", addedBy: "You", emoji: "⭐", color: "#FFB6D9", completed: false },
+      { id: 5, title: "Roam around the city for the entire day", addedBy: "You", emoji: "🏢", color: "#FFB6D9", completed: false },
+      { id: 6, title: "Graduate", addedBy: "You", emoji: "🎓", color: "#FFB6D9", completed: false },
+      { id: 7, title: "Complete another 365 days", addedBy: "You", emoji: "📅", color: "#FFB6D9", completed: false },
     ];
   });
   
