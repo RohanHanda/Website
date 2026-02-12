@@ -343,7 +343,7 @@ function ValentinesSite() {
               <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 mb-4 animate-gradient">
                 Yay! You Said Yes! 🎉
               </h1>
-              <p className="text-2xl text-pink-600 font-semibold animate-pulse">I love you so much! 💖</p>
+              <p className="text-2xl text-pink-600 font-semibold animate-pulse">I love you so so so so much! 💖</p>
               <p className="text-lg text-pink-500 mt-4">Solve puzzles to unlock special surprises! 🧩</p>
             </div>
 
@@ -450,20 +450,23 @@ function ValentinesSite() {
               
               <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                 <p className="animate-slide-up">
-                  Every day with you feels like Valentine's Day. You bring so much joy, laughter, and love into my life. 💕
+                  Hi Beautiful!!!!
                 </p>
                 <p className="animate-slide-up delay-200">
-                  From the moment I wake up to the moment I fall asleep, you're always on my mind. Your smile lights up my world, and your laugh is my favorite sound. 🌟
+                  Happy Valentines Day, I know we dont celebrate valentines and all, but I just wanted to do something special for you. Toh, yeah apni puri ek brain cell use karke I made this.
                 </p>
                 <p className="animate-slide-up delay-400">
-                  Thank you for being you - for your kindness, your humor, your strength, and your beautiful heart. You make everything better just by being there. ✨
+                  And honestly dimag kharab hogaya mera isko deploy karte karte, but yeah I finally got it working😭. I know aaj kal sab yeh hi kar rahe hai, and obviously ai ne kiya hai sara heavy lifting, but personalize kiya meine, coder jo hu😏.
                 </p>
                 <p className="animate-slide-up delay-600">
-                  I love you more than words can express, but I hope this little site shows you just how much you mean to me. 💖
+                  All of this made me realize ki meine AIML kyu choose kiya, anyways coming to the main point, I really love you more than I can explain in words and ik we havent been the most talkative in the last few days, but gate is more important than us and ik you will do really well.
+                </p>
+                <p className="animate-slide-up delay-800">
+                  So to not disturb you from your studies I decided to make this, I really love you and gate ke baad party karne chalenge
                 </p>
                 <p className="text-right font-semibold text-pink-600 mt-8 animate-slide-up delay-800">
                   Forever yours,<br/>
-                  Your Boyfriend 💕
+                  Your 🐒
                 </p>
               </div>
             </div>
@@ -501,17 +504,8 @@ function ValentinesSite() {
                   <h3 className="text-xl font-bold text-gray-800 text-center">
                     {memory.title}
                   </h3>
-                  <p className="text-center text-pink-500 mt-2 text-sm">
-                    Tap to see photo 📷
-                  </p>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-12 bg-pink-100 rounded-3xl p-8 text-center border-2 border-pink-300">
-              <p className="text-pink-700 text-lg">
-                💡 <strong>Pro tip:</strong> You can replace these placeholder memories with real photos! Just upload your favorite pictures together. 💕
-              </p>
             </div>
           </div>
         )}
@@ -597,13 +591,6 @@ function ValentinesSite() {
               <div className="text-gray-500 text-sm mb-4">
                 💡 Tip: Pieces in the correct position will show a green checkmark!
               </div>
-              
-              <div className="bg-pink-50 rounded-2xl p-4 mt-4 border-2 border-pink-200">
-                <p className="text-pink-700 text-sm">
-                  <strong>🎨 Want to use your own photos?</strong><br/>
-                  Replace the imageUrl in the code with your own image URLs or upload photos!
-                </p>
-              </div>
             </div>
           </div>
         )}
@@ -625,10 +612,10 @@ function ValentinesSite() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { title: "Movie Night", subtitle: "Pick any movie!", emoji: "🎬", color: "#FFB6C1" },
-                { title: "Breakfast in Bed", subtitle: "Your favorite meal!", emoji: "🥞", color: "#FFE4E1" },
+                { title: "Kisses", subtitle: "Tabadtod makeout", emoji: "🥞", color: "#FFE4E1" },
                 { title: "Massage", subtitle: "30 minutes of relaxation", emoji: "💆‍♀️", color: "#FFC0CB" },
-                { title: "Date Night", subtitle: "Anywhere you choose!", emoji: "🌹", color: "#FFB6D9" },
-                { title: "Dessert Run", subtitle: "Ice cream, cookies, you name it!", emoji: "🍨", color: "#FFD4E5" },
+                { title: "Date Night", subtitle: "Unfortunately, online meet pe hi ho sakta hai", emoji: "🌹", color: "#FFB6D9" },
+                { title: "Dessert Run", subtitle: "Ice cream, waffles, you name it!", emoji: "🍨", color: "#FFD4E5" },
                 { title: "Free Pass", subtitle: "Win any argument", emoji: "😇", color: "#FFE4EC" },
                 { title: "Surprise Gift", subtitle: "Something special!", emoji: "🎁", color: "#FFDCE5" },
                 { title: "Dance Party", subtitle: "Just us two!", emoji: "💃", color: "#FFB6E1" },
