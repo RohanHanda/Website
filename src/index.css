@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* keep your custom keyframes and .animate-* classes below */
+
 @keyframes float {
   0% {
     transform: translateY(0) rotate(0deg);
