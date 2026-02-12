@@ -84,7 +84,7 @@ function ValentinesSite() {
       emoji: '💌', 
       color: '#FFB6C1', 
       gridSize: 3,
-      imageUrl: 'images/IMG20251128175810.jpg'
+      imageUrl: 'https://i.pinimg.com/1200x/9c/0e/46/9c0e4629a53d75e42c2f08b05996f768.jpg'
     },
     { 
       id: 'memories', 
@@ -93,7 +93,7 @@ function ValentinesSite() {
       emoji: '📸', 
       color: '#FFE4E1', 
       gridSize: 4,
-      imageUrl: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop'
+      imageUrl: 'https://i.pinimg.com/1200x/a3/ea/b8/a3eab8654f7fbd1848a69424cbde3f16.jpg'
     },
     { 
       id: 'coupons', 
@@ -102,7 +102,7 @@ function ValentinesSite() {
       emoji: '🎁', 
       color: '#FFC0CB', 
       gridSize: 4,
-      imageUrl: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=600&fit=crop'
+      imageUrl: 'https://i.pinimg.com/736x/60/f2/e6/60f2e68dd25a6d04fd3e5c5b97d0bc01.jpg'
     }
   ];
 
