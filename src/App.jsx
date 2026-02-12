@@ -286,7 +286,7 @@ function ValentinesSite() {
               </div>
               
               <h1 className="text-7xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-pink-500 mb-6 animate-gradient">
-                Hey You!
+                Hey Babe!
               </h1>
               
               <p className="text-3xl text-pink-600 mb-12 animate-pulse">
@@ -321,7 +321,7 @@ function ValentinesSite() {
               </div>
 
               <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500 mb-8 mt-8">
-                Will You Be My Valentine?
+                Will You Be My Valentine?🥹
               </h1>
               
               {noAttempts > 0 && (
@@ -361,8 +361,8 @@ function ValentinesSite() {
               {yesButtonSize > 1.5 && (
                 <p className="text-pink-500 mt-8 text-lg animate-pulse">
                   {yesButtonSize < 2 && "The 'Yes' button is getting bigger because that's the right answer! 😉"}
-                  {yesButtonSize >= 2 && yesButtonSize < 2.5 && "Look how BIG the 'Yes' button is now! Just click it! 💖"}
-                  {yesButtonSize >= 2.5 && "The 'Yes' button is HUGE! You know what to do! 🎯"}
+                  {yesButtonSize >= 2 && yesButtonSize < 2.5 && "Look how BIG the 'Yes' button is now! Just like my....."}
+                  {yesButtonSize >= 2.5 && "Karle yaar itna bhi bura nhi hu"}
                 </p>
               )}
             </div>
@@ -394,7 +394,7 @@ function ValentinesSite() {
                 <div className="absolute -bottom-2 -left-2 text-4xl animate-spin-slow delay-500">✨</div>
               </div>
               <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-pink-600 mb-4 animate-gradient">
-                Yay! You Said Yes! 🎉
+                Yay! You Said Yes! Let's gooooooooooooo 🎉
               </h1>
               <p className="text-2xl text-pink-600 font-semibold animate-pulse">I love you so so so so much! 💖</p>
               <p className="text-lg text-pink-500 mt-4">Solve puzzles to unlock special surprises! 🧩</p>
@@ -477,7 +477,7 @@ function ValentinesSite() {
               </div>
               {solvedPuzzles.length === puzzles.length && (
                 <p className="text-pink-600 font-bold mt-4 text-xl animate-pulse">
-                  🎉 All puzzles complete! You've unlocked everything! 🎉
+                  🎉 All puzzles complete! You've unlocked everything! Just like you unlock my heart! I knew you could do it🎉
                 </p>
               )}
             </div>
@@ -498,7 +498,7 @@ function ValentinesSite() {
               </div>
               
               <h2 className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500">
-                To My Beautiful Girlfriend
+                To Bair
               </h2>
               
               <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
@@ -873,7 +873,7 @@ function ValentinesSite() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { title: "Movie Night", subtitle: "Pick any movie!", emoji: "🎬", color: "#FFB6C1" },
-                { title: "Kisses", subtitle: "Tabadtod makeout", emoji: "🥞", color: "#FFE4E1" },
+                { title: "Kisses", subtitle: "Tabadtod makeout", emoji: "🫦", color: "#FFE4E1" },
                 { title: "Massage", subtitle: "30 minutes of relaxation", emoji: "💆‍♀️", color: "#FFC0CB" },
                 { title: "Date Night", subtitle: "Unfortunately, online meet pe hi ho sakta hai", emoji: "🌹", color: "#FFB6D9" },
                 { title: "Dessert Run", subtitle: "Ice cream, waffles, you name it!", emoji: "🍨", color: "#FFD4E5" },
