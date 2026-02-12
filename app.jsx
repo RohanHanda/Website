@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Sparkles, Gift, Camera, Star } from 'lucide-react';
 
-export default function ValentinesSite() {
+function ValentinesSite() {
   const [hearts, setHearts] = useState([]);
   const [currentPage, setCurrentPage] = useState('cover');
   const [collectedHearts, setCollectedHearts] = useState(0);
@@ -13,19 +13,16 @@ export default function ValentinesSite() {
   const [confetti, setConfetti] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
   
-  // Unlockable sections
   const [unlockedSections, setUnlockedSections] = useState({
     letter: false,
     memories: false,
     coupons: false
   });
   
-  // Puzzle game states
   const [currentPuzzle, setCurrentPuzzle] = useState(null);
   const [puzzlePieces, setPuzzlePieces] = useState([]);
   const [solvedPuzzles, setSolvedPuzzles] = useState([]);
 
-  // Funny messages when trying to click No
   const noMessages = [
     "Oops! The button moved! 😊",
     "Hehe, try again! 💕",
@@ -39,7 +36,6 @@ export default function ValentinesSite() {
     "Fine, I'll make the YES button even BIGGER! 💝",
   ];
 
-  // Floating hearts animation
   useEffect(() => {
     const interval = setInterval(() => {
       const newHeart = {
@@ -53,7 +49,6 @@ export default function ValentinesSite() {
     return () => clearInterval(interval);
   }, []);
 
-  // Confetti animation
   useEffect(() => {
     if (showConfetti) {
       const confettiColors = ['#FF69B4', '#FF1493', '#FFB6C1', '#FFC0CB', '#FF6B9D', '#C71585', '#FFD700', '#FF69B4'];
@@ -71,7 +66,6 @@ export default function ValentinesSite() {
     }
   }, [showConfetti]);
 
-  // Photo gallery memories (you can replace with real photos)
   const memories = [
     { title: "Our First Date", emoji: "🌹", color: "#FFB6C1" },
     { title: "That Amazing Weekend", emoji: "✨", color: "#FFE4E1" },
@@ -81,7 +75,6 @@ export default function ValentinesSite() {
     { title: "The Day I Knew", emoji: "💖", color: "#FFE4EC" }
   ];
 
-  // Puzzle configuration - You can replace these image URLs with your own photos!
   const puzzles = [
     { 
       id: 'letter', 
@@ -90,7 +83,6 @@ export default function ValentinesSite() {
       emoji: '💌', 
       color: '#FFB6C1', 
       gridSize: 3,
-      // Replace this URL with your own image (can be a URL or use base64)
       imageUrl: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&h=600&fit=crop'
     },
     { 
@@ -100,7 +92,6 @@ export default function ValentinesSite() {
       emoji: '📸', 
       color: '#FFE4E1', 
       gridSize: 4,
-      // Replace this URL with a photo of you two together
       imageUrl: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=600&fit=crop'
     },
     { 
@@ -110,14 +101,12 @@ export default function ValentinesSite() {
       emoji: '🎁', 
       color: '#FFC0CB', 
       gridSize: 4,
-      // Replace this URL with another special photo
       imageUrl: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&h=600&fit=crop'
     }
   ];
 
   const [selectedPiece, setSelectedPiece] = useState(null);
 
-  // Initialize puzzle pieces
   const initializePuzzle = (puzzle) => {
     const size = puzzle.gridSize;
     const pieces = [];
@@ -130,7 +119,6 @@ export default function ValentinesSite() {
         col: i % size
       });
     }
-    // Shuffle pieces
     for (let i = pieces.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pieces[i].currentPosition, pieces[j].currentPosition] = [pieces[j].currentPosition, pieces[i].currentPosition];
@@ -141,33 +129,26 @@ export default function ValentinesSite() {
     setCurrentPage('puzzle');
   };
 
-  // Check if puzzle is solved
   const checkPuzzleSolved = (pieces) => {
     return pieces.every(piece => piece.currentPosition === piece.correctPosition);
   };
 
-  // Handle piece click
   const handlePieceClick = (clickedIndex) => {
     if (selectedPiece === null) {
-      // First click - select piece
       setSelectedPiece(clickedIndex);
     } else if (selectedPiece === clickedIndex) {
-      // Clicked same piece - deselect
       setSelectedPiece(null);
     } else {
-      // Second click - swap pieces
       const newPieces = [...puzzlePieces];
       const piece1 = newPieces.find(p => p.currentPosition === selectedPiece);
       const piece2 = newPieces.find(p => p.currentPosition === clickedIndex);
       
-      // Swap positions
       piece1.currentPosition = clickedIndex;
       piece2.currentPosition = selectedPiece;
       
       setPuzzlePieces(newPieces);
       setSelectedPiece(null);
 
-      // Check if solved
       if (checkPuzzleSolved(newPieces)) {
         setTimeout(() => {
           setShowConfetti(true);
@@ -202,7 +183,6 @@ export default function ValentinesSite() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-red-50 to-pink-200 overflow-hidden relative">
-      {/* Confetti explosion */}
       {showConfetti && confetti.map(piece => (
         <div
           key={piece.id}
@@ -217,7 +197,6 @@ export default function ValentinesSite() {
         />
       ))}
 
-      {/* Floating background hearts */}
       {hearts.map(heart => (
         <div
           key={heart.id}
@@ -232,7 +211,6 @@ export default function ValentinesSite() {
         </div>
       ))}
 
-      {/* Sparkles decoration */}
       <div className="absolute top-10 left-10 text-yellow-300 animate-pulse">
         <Sparkles size={24} />
       </div>
@@ -244,7 +222,6 @@ export default function ValentinesSite() {
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* COVER PAGE */}
         {currentPage === 'cover' && (
           <div className="flex flex-col items-center justify-center min-h-screen animate-fade-in">
             <div className="text-center animate-scale-in">
@@ -271,7 +248,6 @@ export default function ValentinesSite() {
               </button>
             </div>
             
-            {/* Decorative hearts around the page */}
             <div className="absolute top-20 left-10 text-6xl animate-bounce delay-300">💗</div>
             <div className="absolute top-40 right-20 text-5xl animate-bounce delay-700">💖</div>
             <div className="absolute bottom-32 left-1/4 text-6xl animate-bounce delay-500">💕</div>
@@ -279,11 +255,9 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* QUESTION PAGE - Will you be my Valentine? */}
         {currentPage === 'question' && (
           <div className="flex flex-col items-center justify-center min-h-screen animate-fade-in">
             <div className="text-center max-w-2xl mx-auto bg-white rounded-3xl p-12 shadow-2xl relative">
-              {/* Decorative hearts */}
               <div className="absolute -top-8 left-1/2 transform -translate-x-1/2">
                 <div className="flex gap-2">
                   <Heart className="w-12 h-12 text-red-500 animate-heartbeat" fill="currentColor" />
@@ -341,10 +315,8 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* HOME PAGE */}
         {currentPage === 'home' && (
           <div className="flex flex-col items-center justify-center min-h-screen animate-fade-in">
-            {/* Extra celebration hearts */}
             <div className="absolute inset-0 pointer-events-none">
               {[...Array(20)].map((_, i) => (
                 <div
@@ -397,7 +369,6 @@ export default function ValentinesSite() {
                       }}
                       className="w-full bg-white rounded-3xl p-8 shadow-2xl hover:shadow-pink-300 hover:scale-105 transform transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden"
                     >
-                      {/* Lock/Unlock indicator */}
                       <div className="absolute top-4 right-4">
                         {isSolved ? (
                           <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
@@ -440,7 +411,6 @@ export default function ValentinesSite() {
               })}
             </div>
 
-            {/* Progress indicator */}
             <div className="mt-12 bg-white rounded-3xl p-6 shadow-lg relative z-10">
               <p className="text-gray-700 text-lg mb-2">
                 <strong>Progress:</strong> {solvedPuzzles.length} / {puzzles.length} puzzles solved
@@ -460,7 +430,6 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* LOVE LETTER PAGE */}
         {currentPage === 'letter' && (
           <div className="max-w-3xl mx-auto animate-fade-in">
             <button
@@ -500,7 +469,6 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* MEMORIES GALLERY */}
         {currentPage === 'memories' && (
           <div className="max-w-5xl mx-auto animate-fade-in">
             <button
@@ -547,7 +515,6 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* PUZZLE GAME */}
         {currentPage === 'puzzle' && currentPuzzle && (
           <div className="max-w-4xl mx-auto animate-fade-in">
             <button
@@ -571,7 +538,6 @@ export default function ValentinesSite() {
                 }
               </p>
 
-              {/* Puzzle Grid */}
               <div 
                 className="inline-grid gap-2 bg-gradient-to-br from-pink-100 to-purple-100 p-6 rounded-2xl mb-6"
                 style={{
@@ -585,7 +551,6 @@ export default function ValentinesSite() {
                   
                   if (!piece) return null;
                   
-                  // Calculate which part of the image this piece shows
                   const pieceSize = 100 / currentPuzzle.gridSize;
                   const row = Math.floor(piece.id / currentPuzzle.gridSize);
                   const col = piece.id % currentPuzzle.gridSize;
@@ -604,7 +569,6 @@ export default function ValentinesSite() {
                         ${isCorrect ? 'ring-4 ring-green-400' : 'ring-2 ring-gray-300'}
                       `}
                     >
-                      {/* Image piece */}
                       <div
                         className="w-full h-full"
                         style={{
@@ -615,12 +579,10 @@ export default function ValentinesSite() {
                         }}
                       />
                       
-                      {/* Piece number overlay */}
                       <div className="absolute bottom-1 right-1 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
                         {piece.id + 1}
                       </div>
                       
-                      {/* Checkmark for correct pieces */}
                       {isCorrect && (
                         <div className="absolute top-1 left-1 bg-green-500 rounded-full w-6 h-6 flex items-center justify-center">
                           <span className="text-white text-sm">✓</span>
@@ -645,7 +607,6 @@ export default function ValentinesSite() {
           </div>
         )}
 
-        {/* LOVE COUPONS PAGE */}
         {currentPage === 'coupons' && (
           <div className="max-w-5xl mx-auto animate-fade-in">
             <button
@@ -708,253 +669,10 @@ export default function ValentinesSite() {
           </div>
         )}
       </div>
-
-      <style>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0.3;
-          }
-          50% {
-            opacity: 0.5;
-          }
-          100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-          }
-        }
-
-        @keyframes heartbeat {
-          0%, 100% {
-            transform: scale(1);
-          }
-          25% {
-            transform: scale(1.1);
-          }
-          50% {
-            transform: scale(1);
-          }
-          75% {
-            transform: scale(1.15);
-          }
-        }
-
-        @keyframes bounce-slow {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        @keyframes fall {
-          from {
-            transform: translateY(0) rotate(0deg);
-          }
-          to {
-            transform: translateY(400px) rotate(360deg);
-          }
-        }
-
-        @keyframes spin-slow {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes scale-in {
-          from {
-            transform: scale(0.8);
-            opacity: 0;
-          }
-          to {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-
-        @keyframes float-gentle {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-30px);
-          }
-        }
-
-        @keyframes confetti-fall {
-          0% {
-            transform: translateY(-10vh) rotate(0deg);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(100vh) rotate(720deg);
-            opacity: 0;
-          }
-        }
-
-        @keyframes wiggle {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-          25% {
-            transform: rotate(-10deg);
-          }
-          75% {
-            transform: rotate(10deg);
-          }
-        }
-
-        @keyframes shake {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          25% {
-            transform: translateX(-5px);
-          }
-          75% {
-            transform: translateX(5px);
-          }
-        }
-
-        @keyframes float-up {
-          0% {
-            transform: translateY(100vh) scale(0);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-100vh) scale(1);
-            opacity: 0;
-          }
-        }
-
-        .animate-heartbeat {
-          animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        .animate-bounce-slow {
-          animation: bounce-slow 2s ease-in-out infinite;
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out;
-        }
-
-        .animate-slide-up {
-          animation: slide-up 0.6s ease-out;
-        }
-
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-
-        .animate-fall {
-          animation: fall 3s linear;
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-
-        .animate-scale-in {
-          animation: scale-in 0.5s ease-out;
-        }
-
-        .animate-float-gentle {
-          animation: float-gentle 3s ease-in-out infinite;
-        }
-
-        .animate-confetti-fall {
-          animation: confetti-fall 3s ease-out forwards;
-        }
-
-        .animate-wiggle {
-          animation: wiggle 0.5s ease-in-out infinite;
-        }
-
-        .animate-shake {
-          animation: shake 0.3s ease-in-out infinite;
-        }
-
-        .animate-float-up {
-          animation: float-up 5s ease-in-out infinite;
-        }
-
-        .delay-200 {
-          animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-          animation-delay: 0.3s;
-        }
-
-        .delay-400 {
-          animation-delay: 0.4s;
-        }
-
-        .delay-500 {
-          animation-delay: 0.5s;
-        }
-
-        .delay-600 {
-          animation-delay: 0.6s;
-        }
-
-        .delay-700 {
-          animation-delay: 0.7s;
-        }
-
-        .delay-800 {
-          animation-delay: 0.8s;
-        }
-
-        .delay-900 {
-          animation-delay: 0.9s;
-        }
-      `}</style>
     </div>
   );
+}
+
+export default function App() {
+  return <ValentinesSite />;
 }
